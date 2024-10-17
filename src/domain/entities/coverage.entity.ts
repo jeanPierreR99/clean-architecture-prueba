@@ -6,11 +6,11 @@ import {
   ManyToMany,
   OneToMany,
 } from "typeorm";
-import { Provider } from "./Provider";
-import { Vehicle } from "./Vehicle";
-import { Place } from "./Place";
-import { Price } from "./Price";
-import { Quotation } from "./Quotation";
+import { Provider } from "./provider.entity";
+import { Vehicle } from "./vehicle.entity";
+import { Place } from "./place.entity";
+import { Price } from "./price.entity";
+import { Quotation } from "./quotation.entity";
 
 @Entity()
 export class Coverage {

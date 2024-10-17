@@ -1,6 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
-import { Coverage } from './Coverage';
-import { Vehicle } from './Vehicle';
+import { Coverage } from './coverage.entity';
+import { Vehicle } from './vehicle.entity';
 
 @Entity()
 export class Provider {

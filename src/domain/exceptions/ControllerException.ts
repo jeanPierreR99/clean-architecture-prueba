@@ -1,6 +1,6 @@
 export class ControllerException extends Error {
   constructor(msg: String) {
-    super(`${msg} is required.`);
+    super(`${msg}`);
     this.name = "ControllerException";
 
     if (Error.captureStackTrace) {

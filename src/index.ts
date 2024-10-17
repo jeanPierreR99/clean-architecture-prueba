@@ -1,23 +1,20 @@
-import "dotenv/config";
-import express from "express";
-import { Routes } from "./app/Routes";
+import { Server } from "./app/server";
+import { Routes } from "./app/routes";
 import { AppDataSource } from "./infrastructure/dataBase/db";
 
-const app = express();
+(() => {
+  startServer();
+})();
 
-app.use(express.json());
-
-app.use("/api", Routes.routes);
-
-const startServer = async () => {
+async function startServer() {
   try {
     await AppDataSource.initialize();
-    app.listen(process.env.PORT, () => {
-      console.log(`SERVER LISTEN PORT ${process.env.PORT}`);
-    });
+
+    const port = parseFloat(process.env.PORT as string);
+    const routes = Routes.routes;
+
+    new Server({ port, routes }).start();
   } catch (e) {
     console.log(e);
   }
-};
-
-startServer();
+}

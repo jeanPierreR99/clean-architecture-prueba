@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm";
-import { Quotation } from "./Quotation";
+import { Quotation } from "./quotation.entity";
 
 @Entity()
 export class User {

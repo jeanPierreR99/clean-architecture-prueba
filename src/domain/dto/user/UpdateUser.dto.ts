@@ -6,7 +6,11 @@ import {
   IsString,
 } from "class-validator";
 
-export class CreateUserDto {
+export class UpdateUserDto {
+  @IsNotEmpty({ message: "El ID es obligatorio" })
+  @IsNumber({}, { message: "El ID debe ser un número" })
+  id!: number;
+
   @IsNotEmpty({ message: "El nombre es obligatorio" })
   @IsString({ message: "El nombre debe ser una cadena" })
   name!: string;

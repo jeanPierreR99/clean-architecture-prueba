@@ -1,6 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToMany, JoinTable } from "typeorm";
-import { Quotation } from "./Quotation";
-import { Coverage } from "./Coverage";
+import { Quotation } from "./quotation.entity";
+import { Coverage } from "./coverage.entity";
 
 @Entity()
 export class Place {

@@ -1,6 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany } from 'typeorm';
-import { Coverage } from './Coverage';
-import { Quotation } from './Quotation';
+import { Coverage } from './coverage.entity';
+import { Quotation } from './quotation.entity';
 
 @Entity()
 export class Price {

@@ -5,10 +5,10 @@ import {
   ManyToOne,
   ManyToMany,
 } from "typeorm";
-import { User } from "./User";
-import { Coverage } from "./Coverage";
-import { Price } from "./Price";
-import { Place } from "./Place";
+import { User } from "./user.entity";
+import { Coverage } from "./coverage.entity";
+import { Price } from "./price.entity";
+import { Place } from "./place.entity";
 
 @Entity()
 export class Quotation {

@@ -1,13 +1,13 @@
 import "dotenv/config";
 import { DataSource } from "typeorm";
-import { User } from "../../domain/entities/User";
-import { Vehicle } from "../../domain/entities/Vehicle";
-import { Quotation } from "../../domain/entities/Quotation";
-import { Provider } from "../../domain/entities/Provider";
-import { Price } from "../../domain/entities/Price";
-import { Place } from "../../domain/entities/Place";
-import { Coverage } from "../../domain/entities/Coverage";
-import { Category } from "../../domain/entities/Category";
+import { User } from "../../domain/entities/user.entity";
+import { Vehicle } from "../../domain/entities/vehicle.entity";
+import { Quotation } from "../../domain/entities/quotation.entity";
+import { Provider } from "../../domain/entities/provider.entity";
+import { Price } from "../../domain/entities/price.entity";
+import { Place } from "../../domain/entities/place.entity";
+import { Coverage } from "../../domain/entities/coverage.entity";
+import { Category } from "../../domain/entities/category.entity";
 
 export const AppDataSource = new DataSource({
   type: "mysql",

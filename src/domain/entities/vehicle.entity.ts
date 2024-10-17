@@ -1,7 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToOne, ManyToMany, JoinTable } from 'typeorm';
-import { Coverage } from './Coverage';
-import { Provider } from './Provider';
-import { Category } from './Category';
+import { Coverage } from './coverage.entity';
+import { Provider } from './provider.entity';
+import { Category } from './category.entity';
 
 @Entity()
 export class Vehicle {
