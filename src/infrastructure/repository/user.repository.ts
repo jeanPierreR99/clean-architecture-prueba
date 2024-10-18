@@ -1,5 +1,6 @@
 import { Repository } from "typeorm";
-import { UserInterface, CreateUserDto, User } from "../../domain";
+import { CreateUserDto, User } from "../../domain";
+import { UserInterface } from "../interfaces/user.interface";
 
 export class UserRepository implements UserInterface {
   constructor(private repository: Repository<User>) {

@@ -1,6 +1,5 @@
-import { Server } from "./app/server";
-import { Routes } from "./app/routes";
-import { AppDataSource } from "./infrastructure/dataBase/db";
+import { IndexRoutes, IndexServer } from "./presentation";
+import { AppDataSource } from "./infrastructure";
 
 (() => {
   startServer();
@@ -11,9 +10,9 @@ async function startServer() {
     await AppDataSource.initialize();
 
     const port = parseFloat(process.env.PORT as string);
-    const routes = Routes.routes;
+    const routes = IndexRoutes.routes;
 
-    new Server({ port, routes }).start();
+    new IndexServer({ port, routes }).start();
   } catch (e) {
     console.log(e);
   }

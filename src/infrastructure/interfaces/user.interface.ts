@@ -1,5 +1,4 @@
-import { CreateUserDto } from "../dto/user/CreateUser.dto";
-import { User } from "../entities/user.entity";
+import { CreateUserDto, User } from "../../domain";
 
 export interface UserInterface {
   get(): Promise<User[]>;

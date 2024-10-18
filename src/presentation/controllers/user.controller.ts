@@ -1,16 +1,16 @@
-import { CreateUserDto } from "../../domain/dto/user/CreateUser.dto";
-import { ControllerException } from "../../domain/exceptions/ControllerException";
-import { UserCases } from "../../use-cases/user.cases";
 import { Request, Response } from "express";
 import {
   ConflictException,
+  ControllerException,
+  CreateUserDto,
   NotFoundException,
-} from "../../domain/exceptions/Entities";
-import { UpdateUserDto } from "../../domain/dto/user/UpdateUser.dto";
-import { validationHandler } from "../../utils/ValidationHandler";
+  UpdateUserDto,
+} from "../../domain";
+import { validationHandler } from "../../utils";
+import { UserCases } from "../../application";
 
 export class UserController {
-  constructor(private userCases: UserCases) {}
+  constructor(private cases: UserCases) {}
 
   async save(req: Request, res: Response): Promise<void> {
     try {
@@ -20,7 +20,7 @@ export class UserController {
         CreateUserDto
       );
       if (!dataDto) return;
-      const data = await this.userCases.save(dataDto);
+      const data = await this.cases.save(dataDto);
       res.status(201).json(data);
     } catch (error) {
       console.log(error);
@@ -37,11 +37,11 @@ export class UserController {
       const page: string = req.query.page as string;
       const limit: string = req.query.limit as string;
       if (parseInt(page) && parseInt(limit)) {
-        const data = await this.userCases.getPages(page, limit);
+        const data = await this.cases.getPages(page, limit);
         res.status(200).json(data);
         return;
       }
-      const data = await this.userCases.get();
+      const data = await this.cases.get();
       res.status(200).json(data);
     } catch (error) {
       console.log(error);
@@ -53,7 +53,7 @@ export class UserController {
     try {
       const id: string = req.params.id as string;
       if (!parseInt(id)) throw new ControllerException("id not number");
-      const data = await this.userCases.getById(id);
+      const data = await this.cases.getById(id);
       res.status(200).json(data);
     } catch (error) {
       console.log(error);
@@ -72,7 +72,7 @@ export class UserController {
     try {
       const id: string = req.params.id;
       if (!parseInt(id)) throw new ControllerException("id not number");
-      await this.userCases.delete(id);
+      await this.cases.delete(id);
       res.status(200).json({ message: "ok" });
     } catch (error) {
       console.log(error);
@@ -96,7 +96,7 @@ export class UserController {
         UpdateUserDto
       );
       if (!dataDto) return;
-      const data = await this.userCases.update(dataDto);
+      const data = await this.cases.update(dataDto);
       res.status(200).json(data);
     } catch (error) {
       if (error instanceof NotFoundException) {
